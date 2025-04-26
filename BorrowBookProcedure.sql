@@ -34,7 +34,7 @@ BEGIN
 	select @copies = Books.CopiesAvailable from Books where Books.BookId = @BookId;
 	if @active = 1 and @copies>0
 	begin
-	insert into Borrowed(MemberId,BookId,BorrowDate,DueDate,IsReturned) values(@MemberId,@BookId,GETDATE(),DATEADD(MONTH,1,GETDATE()),0);
+	insert into dbo.Borrowed(MemberId, BookId, BorrowDate, DueDate, IsReturned) values (@MemberId,@BookId,GETDATE(),DATEADD(MONTH,1,GETDATE()),0);
 	update Books set CopiesAvailable = @copies-1 where Books.BookId = @BookId;
 	update Member set TotalBooksBorrowed = TotalBooksBorrowed+1 where Member.MemberId= @MemberId;
 	end
