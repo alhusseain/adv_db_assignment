@@ -1,5 +1,5 @@
-DELETE FROM BorrowedBooks;
-DELETE FROM Members;
+DELETE FROM Borrowed;
+DELETE FROM Member;
 DELETE FROM Books;
 
 
